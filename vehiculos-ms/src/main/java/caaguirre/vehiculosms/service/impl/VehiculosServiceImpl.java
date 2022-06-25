@@ -48,12 +48,13 @@ public class VehiculosServiceImpl implements VehiculosService {
                 "Focus",
                 2019,
                 "",
-                "Dos ruedas", 3
+                "Dos ruedas", 1
         );
 
         list.add(carro);
         list.add(moto);
         list.add(camioneta);
+        list.add(bicicleta);
 
         for (Vehiculo v : list) {
             if (v.getPropietario() == propietario) {
