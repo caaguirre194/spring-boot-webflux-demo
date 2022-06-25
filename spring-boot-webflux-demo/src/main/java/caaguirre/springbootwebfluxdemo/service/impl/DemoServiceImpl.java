@@ -39,6 +39,6 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public Flux<Object> obtenerTodasPropiedadesPorUsuario(int propietario) throws Exception {
-        return Flux.merge(obtenerVehiculosPorUsuario(propietario), obtenerPropiedadesPorUsuario(propietario));
+        return Flux.merge(obtenerPropiedadesPorUsuario(propietario), obtenerVehiculosPorUsuario(propietario));
     }
 }

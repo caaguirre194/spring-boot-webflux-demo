@@ -51,7 +51,7 @@ public class PropiedadesServiceImpl implements PropiedadesService {
             }
         }
 
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         return propiedades;
     }
