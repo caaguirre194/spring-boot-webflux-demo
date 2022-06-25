@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementación de VehiculosService
+ * Implementación de PropiedadesService
  *
  * @author Carlos Aguirre <caaguirre194@gmail.com>
  * @version 1.0.0
