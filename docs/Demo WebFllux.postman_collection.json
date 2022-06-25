@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "b4a3a73d-e1ea-42fc-aaab-7c516fcafbd6",
+		"name": "Demo WebFllux",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "propiedades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/propiedades/api/v1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"propiedades",
+						"api",
+						"v1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vehiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8087/vehiculos/api/v1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"vehiculos",
+						"api",
+						"v1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "demo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8089/demo/api/v1/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"demo",
+						"api",
+						"v1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
