@@ -2,9 +2,12 @@ package caaguirre.vehiculosms.service.impl;
 
 import caaguirre.vehiculosms.model.Vehiculo;
 import caaguirre.vehiculosms.service.VehiculosService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +17,7 @@ import java.util.List;
  * @version 1.0.0
  * @date 25/06/2022
  */
+@Slf4j
 @Service
 public class VehiculosServiceImpl implements VehiculosService {
 
@@ -63,6 +67,10 @@ public class VehiculosServiceImpl implements VehiculosService {
         }
 
         Thread.sleep(2000);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
+        Date resultDate = new Date(System.currentTimeMillis());
+        log.info("Vehiculos -> " + sdf.format(resultDate));
 
         return vehiculosPropietario;
     }

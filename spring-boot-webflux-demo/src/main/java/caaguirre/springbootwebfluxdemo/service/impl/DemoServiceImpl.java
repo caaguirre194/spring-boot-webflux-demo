@@ -3,10 +3,14 @@ package caaguirre.springbootwebfluxdemo.service.impl;
 import caaguirre.springbootwebfluxdemo.model.Propiedad;
 import caaguirre.springbootwebfluxdemo.model.Vehiculo;
 import caaguirre.springbootwebfluxdemo.service.DemoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Implementación de DemoService
@@ -15,6 +19,7 @@ import reactor.core.publisher.Mono;
  * @version 1.0.0
  * @date 25/06/2022
  */
+@Slf4j
 @Service
 public class DemoServiceImpl implements DemoService {
 
@@ -22,7 +27,6 @@ public class DemoServiceImpl implements DemoService {
     WebClient webClientPropiedades = WebClient.create("http://localhost:8088");
 
     public Mono<Vehiculo[]> obtenerVehiculosPorUsuario(int id) {
-
         return webClientVehiculos.get()
                 .uri("/vehiculos/api/v1/" + id)
                 .retrieve()
@@ -30,7 +34,6 @@ public class DemoServiceImpl implements DemoService {
     }
 
     public Mono<Propiedad[]> obtenerPropiedadesPorUsuario(int id) {
-
         return webClientPropiedades.get()
                 .uri("/propiedades/api/v1/" + id)
                 .retrieve()
@@ -39,6 +42,15 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public Flux<Object> obtenerTodasPropiedadesPorUsuario(int propietario) throws Exception {
-        return Flux.merge(obtenerPropiedadesPorUsuario(propietario), obtenerVehiculosPorUsuario(propietario));
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
+        Date resultDate = new Date(System.currentTimeMillis());
+        log.info("WebFlux -> " + sdf.format(resultDate));
+
+        Flux<Object> propiedadesUsuario$ = Flux.merge(obtenerPropiedadesPorUsuario(propietario), obtenerVehiculosPorUsuario(propietario));
+        propiedadesUsuario$.subscribe(i -> {
+            log.info(i.getClass() + "-> " + sdf.format(new Date(System.currentTimeMillis())));
+        });
+
+        return propiedadesUsuario$;
     }
 }

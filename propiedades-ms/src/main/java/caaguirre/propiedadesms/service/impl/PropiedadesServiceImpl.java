@@ -2,9 +2,12 @@ package caaguirre.propiedadesms.service.impl;
 
 import caaguirre.propiedadesms.model.Propiedad;
 import caaguirre.propiedadesms.service.PropiedadesService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +17,7 @@ import java.util.List;
  * @version 1.0.0
  * @date 25/06/2022
  */
+@Slf4j
 @Service
 public class PropiedadesServiceImpl implements PropiedadesService {
 
@@ -52,6 +56,10 @@ public class PropiedadesServiceImpl implements PropiedadesService {
         }
 
         Thread.sleep(5000);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
+        Date resultDate = new Date(System.currentTimeMillis());
+        log.info("Propiedades -> " + sdf.format(resultDate));
 
         return propiedades;
     }
