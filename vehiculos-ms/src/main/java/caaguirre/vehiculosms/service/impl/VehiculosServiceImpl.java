@@ -62,6 +62,8 @@ public class VehiculosServiceImpl implements VehiculosService {
             }
         }
 
+        Thread.sleep(2000);
+
         return vehiculosPropietario;
     }
 
